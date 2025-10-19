@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Asistente AI Email",
+  "version": "1.0",
+  "description": "Plantilla de extensión para la prueba de origen de Rewriter API.",
+  "icons": {
+    "128": "icon128.png"
+  },
+  "host_permissions": [
+    "*://mail.google.com/*",
+    "*://outlook.live.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://mail.google.com/*", "*://outlook.live.com/*"],
+      "js": ["content.js", "ui.js"],
+      "css": ["styles.css"],
+      "run_at": "document_start" 
+    }
+  ]
+}
