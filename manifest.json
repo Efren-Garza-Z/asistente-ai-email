@@ -15,7 +15,7 @@
       "matches": ["*://mail.google.com/*", "*://outlook.live.com/*"],
       "js": ["content.js", "ui.js"],
       "css": ["styles.css"],
-      "run_at": "document_start" 
+      "run_at": "document_start"
     }
   ]
 }

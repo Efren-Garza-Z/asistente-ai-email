@@ -1,17 +1,15 @@
 /* styles.css */
 
-/* Contenedor del panel para que flote bien */
 #ai-assistant-panel {
     display: flex;
-    gap: 8px; /* Espacio entre botones */
-    margin-left: 15px; /* Espacio para separarse de los botones de Gmail */
+    gap: 8px;
+    margin-left: 15px;
     align-items: center;
     padding: 5px 0;
 }
 
-/* Estilos básicos de botón */
 .ai-button-styles {
-    background-color: #0b57d0; /* Azul de Google */
+    background-color: #0b57d0;
     color: white;
     border: none;
     border-radius: 9999px;
@@ -19,7 +17,7 @@
     font-size: 13px;
     cursor: pointer;
     transition: background-color 0.3s;
-    height: 34px; /* Mismo tamaño que los botones típicos de Gmail */
+    height: 34px;
 }
 
 .ai-button-styles:hover {
@@ -31,41 +29,24 @@
     cursor: not-allowed;
 }
 
-/* Asegúrate de que los estilos no se filtren a otros elementos de Gmail (Shadow DOM, etc.) */
-/* Esto puede requerir usar selectores muy específicos si hay problemas. */
-
-/* Estilo Base para los botones de Rewriter si usas un contenedor común */
-/* .ai-rewriter-container button { ... } */
-
 .ai-context-button {
-    /* Reiniciar estilos de fondo */
     background-color: transparent !important; 
-    
-    /* Configurar el borde */
-    border: 1px solid #4285f4 !important; /* El azul de Google/Gmail */
-    color: #4285f4 !important; /* El color del texto */
-    
-    /* Asegurarse de que el padding/tamaño sea consistente */
+    border: 1px solid #4285f4 !important;
+    color: #4285f4 !important;
     padding: 8px 16px; 
-    border-radius: 999px; /* Botones redondeados */
+    border-radius: 999px;
     cursor: pointer;
     font-weight: 500;
     margin-right: 6px;
     transition: background-color 0.2s;
 }
 
-
 .ai-context-button-changed {
-    /* Reiniciar estilos de fondo */
     background-color: rgba(75, 75, 75, 0.351); 
-    
-    /* Configurar el borde */
-    border: 1px solid #4285f4 !important; /* El azul de Google/Gmail */
-    color: #4285f4 !important; /* El color del texto */
-    
-    /* Asegurarse de que el padding/tamaño sea consistente */
+    border: 1px solid #4285f4 !important;
+    color: #4285f4 !important;
     padding: 8px 16px; 
-    border-radius: 999px; /* Botones redondeados */
+    border-radius: 999px;
     cursor: pointer;
     font-weight: 500;
     margin-right: 6px;
@@ -73,5 +54,5 @@
 }
 
 .ai-context-button:hover {
-    background-color: rgba(66, 133, 244, 0.08) !important; /* Efecto hover sutil */
+    background-color: rgba(66, 133, 244, 0.08) !important; 
 }

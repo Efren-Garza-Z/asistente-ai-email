@@ -1,39 +1,42 @@
 
-const ORIGIN_TRIAL_TOKEN = "AjtNhFShyXPOmmequ53K5zpXLbsI8YwA4GCSYQGSOOjYC7wCOin3VRQlU6TqCGT6GpsszPGZkDN/59qh3nBy4AcAAABleyJvcmlnaW4iOiJodHRwczovL2xvaG9vYmtjbm9pZ21jZXBwYmpia29vZGRqYmdjcGJoOjQ0MyIsImZlYXR1cmUiOiJBSVdyaXRlckFQSSIsImV4cGlyeSI6MTc2OTQ3MjAwMH0="; 
+const ORIGIN_TRIAL_TOKEN = "AjtNhFShyXPOmmequ53K5zpXLbsI8YwA4GCSYQGSOOjYC7wCOin3VRQlU6TqCGT6GpsszPGZkDN/59qh3nBy4AcAAABleyJvcmlnaW4iOiJodHRwczovL2xvaG9vYmtjbm9pZ21jZXBwYmpia29vZGRqYmdjcGJoOjQ0MyIsImZlYXR1cmUiOiJBSVdyaXRlckFQSSIsImV4cGlyeSI6MTc2OTQ3MjAwMH0=";
 let rewriterInstance = null;
 
 
+/**
+ * Initializes the AI functionality by checking API availability and setting up the UI
+ */
 async function initializeAI() {
  
     if (!('Rewriter' in self)) {
-        console.error("❌ La API de Rewriter no es visible. Token no aceptado o Chrome incompatible.");
+        console.error("❌ Rewriter API not visible. Token not accepted or Chrome incompatible.");
         return;
     }
 
-    console.log("✅ Objeto Rewriter visible. Comprobando disponibilidad del modelo...");
+    console.log("✅ Rewriter object visible. Checking model availability...");
     const availability = await Rewriter.availability();
     let rewriter;
 
     if (availability === 'available') {
-        console.log("🚀 Gemini Nano está listo. Creando instancia Rewriter...");
-
+        console.log("🚀 Gemini Nano is ready. Creating Rewriter instance...");
         initAssistantUI();
         
     } else if (availability === 'downloadable') {
-        console.log("⚠️ Modelo disponible para descarga. Requiere acción/interacción del usuario.");
+        console.log("⚠️ Model available for download. Requires user action/interaction.");
         initAssistantUI();
 
     } else {
-        console.warn(`❌ API no utilizable. Estado: ${availability}`);
+        console.warn(`❌ API not usable. Status: ${availability}`);
     }
 }
 
-// --- LÓGICA DE INYECCIÓN DEL TOKEN ---
-// (Tu código de inyección del token está bien, lo dejamos simplificado aquí)
+/**
+ * Injects the origin trial token into the page to enable experimental features
+ * Re-injects the token if it's lost during SPA navigation
+ */
 function injectOriginTrialToken() {
-    // ... (Tu código de inyección del token, simplificado por espacio) ...
     if (document.querySelector('meta[http-equiv="origin-trial"]')) {
-      initializeAI(); // Llama a la lógica de la IA después de verificar la inyección
+      initializeAI(); // Call AI logic after verifying injection
       return;
     }
     
@@ -43,16 +46,18 @@ function injectOriginTrialToken() {
       return;
     }
     
-    console.log("✅ Token de Prueba de Origen inyectado con éxito.");
-    initializeAI(); // Llama a la lógica de la IA después de la inyección
+    console.log("✅ Origin Trial Token successfully injected.");
+    initializeAI(); // Call AI logic after injection
 }
 
-// Lanza la inyección de forma inicial.
+// Initial token injection
 injectOriginTrialToken();
 
-// Observador para manejar las navegaciones de Gmail/Outlook sin recarga completa
+/**
+ * Observer to handle Gmail/Outlook SPA navigation without complete page reload
+ * Re-injects the token if it's removed from DOM
+ */
 const observer = new MutationObserver(() => {
-  // Solo reinyecta si el token se ha perdido del DOM
   if (!document.querySelector('meta[http-equiv="origin-trial"]')) {
     injectOriginTrialToken();
   }
