@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Asistente AI Email",
+  "name": "Gemini Rewriter for Gmail",
   "version": "1.0",
-  "description": "Plantilla de extensión para la prueba de origen de Rewriter API.",
+  "description": "Instantly rewrite your Gmail drafts. Use the power of Gemini Nano to change the tone (Formal, Friendly) or length (Shorten) of your email with a single click. Maximum efficiency, minimum effort.",
   "icons": {
     "128": "icon128.png"
   },
